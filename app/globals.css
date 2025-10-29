@@ -7,20 +7,17 @@
 */
 :root {
   --background: white;
-  --foreground: #101010;
+  --foreground: #0d0d0d;
   --muted: #595959;
   --surface: rgb(243, 248, 255);
-  --surface-highlighted: white;
+  --surface-hover: #18181b;
   --surface-elevated: rgb(246, 250, 255);
   --border-subtle: white;
   --primary: rgb(1 97 239);
   --primary-bold: rgb(1 70 175);
-  --secondary: rgb(0 70 175);
-  --accent: #5521b5;
+  --accent: #232cd9;
   --on-primary: white;
   --placeholder: #6b7280;
-  --header-scroll-bg: rgba(255, 255, 255, 0.9);
-  --header-scroll-border: transparent;
 }
 
 /* ===========================
@@ -29,21 +26,18 @@
    Override variables when .dark class is applied
 */
 .dark {
-  --background: #030620;
-  --foreground: #e5ecf6;
+  --background: #000000;
+  --foreground: #e8e8e8;
   --muted: rgba(229, 236, 246, 0.75);
-  --surface: #030620;
-  --surface-highlighted: rgb(15, 23, 42);
-  --surface-elevated: #374151;
+  --surface: #09090b;
+  --surface-hover: #18181b;
+  --surface-elevated: #27272a;
   --border-subtle: #4b5563;
-  --primary: #0161ef;
+  --primary: #1e21d2;
   --primary-bold: rgb(1 84 207);
-  --secondary: rgb(191 219 254);
-  --accent: #AD78FF;
+  --accent: #1e21d2;
   --on-primary: white;
   --placeholder: #6b7280;
-  --header-scroll-bg: rgba(3, 6, 33, 0.9);
-  --header-scroll-border: rgba(107, 114, 128, 0.2);
 }
 
 /* ===========================
@@ -57,18 +51,17 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
   --color-surface-elevated: var(--surface-elevated);
-  --color-surface-highlighted: var(--surface-highlighted);
   --color-border-subtle: var(--border-subtle);
   --color-primary: var(--primary);
   --color-primary-bold: var(--primary-bold);
-  --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-on-primary: var(--on-primary);
   --color-placeholder: var(--placeholder);
 
   /* Font families */
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -79,5 +72,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
 }

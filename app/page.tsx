@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <ProjectLayout project={projectData.project}>
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Left: Observability section */}
         <ObservabilityCard
           stats={projectData.stats}

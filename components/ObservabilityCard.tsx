@@ -1,5 +1,6 @@
 "use client";
 
+import { BarChart3, FileText } from "lucide-react";
 import { StatCard } from "./StatCard";
 import { TimelineGraph } from "./TimelineGraph";
 import { LogEntry } from "./LogEntry";
@@ -22,25 +23,27 @@ export function ObservabilityCard({
   onLogClick,
 }: ObservabilityCardProps) {
   return (
-    <div className="bg-surface-highlighted border border-border-subtle rounded-lg overflow-hidden">
+    <div className="bg-surface border border-border-subtle rounded-lg overflow-hidden">
       {/* Header with tabs */}
       <div className="border-b border-border-subtle px-6 py-4">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-foreground">
+          <h2 className="text-md font-semibold text-foreground">
             Observability
           </h2>
           <div className="flex gap-2">
-            <button className="px-3 py-1 text-sm text-muted hover:text-foreground border border-border-subtle rounded transition-colors">
-              📊 Monitor
+            <button className="px-3 py-1 text-xs text-muted hover:text-foreground border border-border-subtle rounded transition-colors flex items-center gap-2">
+              <BarChart3 size={14} />
+              Monitor
             </button>
-            <button className="px-3 py-1 text-sm bg-primary/10 text-primary border border-primary/20 rounded font-medium">
-              📝 Logs
+            <button className="px-3 py-1 text-xs bg-primary/10 text-primary border border-primary/20 rounded font-medium flex items-center gap-2">
+              <FileText size={14} />
+              Logs
             </button>
           </div>
         </div>
 
         {/* Subtitle */}
-        <p className="text-sm text-muted">Logs in the last 7 days</p>
+        <p className="text-xs text-muted">Logs in the last 7 days</p>
       </div>
 
       {/* Stats grid */}
