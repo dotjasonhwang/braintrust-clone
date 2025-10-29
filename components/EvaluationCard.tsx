@@ -22,9 +22,9 @@ export function EvaluationCard() {
       </div>
 
       {/* Get started section */}
-      <div className="flex flex-col items-center text-center py-8">
+      <div className="flex flex-col items-start py-8">
         {/* Icon with gradient background */}
-        <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4">
+        <div className="w-16 h-16 rounded-lg bg-accent from-primary to-accent flex items-center justify-center mb-4">
           <BarChart3 size={32} className="text-white" />
         </div>
 
@@ -38,15 +38,15 @@ export function EvaluationCard() {
 
         {/* Action buttons */}
         <div className="flex flex-col gap-2 w-full max-w-xs">
-          <button className="w-full px-4 py-2 text-xs text-foreground bg-surface hover:bg-surface-elevated border border-border-subtle rounded transition-colors flex items-center justify-center gap-2">
+          <button className="w-full px-4 py-2 text-xs text-foreground bg-background hover:bg-surface-hover border border-border-subtle rounded transition-colors flex justify-start gap-2">
             <MessageSquareText size={14} />
             <span>Add your prompt</span>
           </button>
-          <button className="w-full px-4 py-2 text-xs text-foreground bg-surface hover:bg-surface-elevated border border-border-subtle rounded transition-colors flex items-center justify-center gap-2">
+          <button className="w-full px-4 py-2 text-xs text-foreground bg-background hover:bg-surface-hover border border-border-subtle rounded transition-colors flex justify-start gap-2">
             <Upload size={14} />
             <span>Upload data</span>
           </button>
-          <button className="w-full px-4 py-2 text-xs text-foreground bg-surface hover:bg-surface-elevated border border-border-subtle rounded transition-colors flex items-center justify-center gap-2">
+          <button className="w-full px-4 py-2 text-xs text-foreground bg-background hover:bg-surface-hover border border-border-subtle rounded transition-colors flex justify-start gap-2">
             <FlaskConical size={14} />
             <span>Create experiment</span>
           </button>

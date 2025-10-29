@@ -1,33 +1,57 @@
-/**
- * Timeline graph component (placeholder for V1)
- * Simple visualization showing activity over the past 7 days
- */
+"use client";
+
+import { TrendingUp } from "lucide-react";
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+
+export const description = "A bar chart";
+
+const chartData = [
+  { month: "Mon", desktop: 186 },
+  { month: "Tues", desktop: 305 },
+  { month: "Wed", desktop: 237 },
+  { month: "Thurs", desktop: 73 },
+];
+
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "var(--chart-1)",
+  },
+} satisfies ChartConfig;
 
 export function TimelineGraph() {
-  const days = ["Thu 23", "Fri 24", "Sat 25", "Oct 26", "Mon 27", "Tue 28", "Wed 29"];
-
   return (
-    <div className="h-32 border-t border-border-subtle pt-4">
-      {/* Graph area */}
-      <div className="h-20 flex items-end justify-between gap-2 px-4">
-        {days.map((day, index) => (
-          <div key={day} className="flex-1 flex flex-col items-center">
-            {/* Bar - only show on last day for V1 */}
-            <div className="w-full flex items-end justify-center mb-2">
-              {index === days.length - 1 ? (
-                <div
-                  className="w-2 bg-primary rounded-t"
-                  style={{ height: "48px" }}
-                ></div>
-              ) : (
-                <div className="w-2" style={{ height: "48px" }}></div>
-              )}
-            </div>
-            {/* Date label */}
-            <div className="text-xs text-muted">{day}</div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <Card>
+      <ChartContainer config={chartConfig}>
+        <BarChart accessibilityLayer data={chartData}>
+          <XAxis
+            dataKey="month"
+            tickLine={false}
+            tickMargin={10}
+            axisLine={true}
+          />
+          <ChartTooltip
+            cursor={false}
+            content={<ChartTooltipContent hideLabel />}
+          />
+          <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
+        </BarChart>
+      </ChartContainer>
+    </Card>
   );
 }
