@@ -1,0 +1,24 @@
+{
+  "project": {
+    "id": "581558dc-d33b-48bb-884f-f77866d22c87",
+    "name": "My Project"
+  },
+  "stats": {
+    "traces": 1,
+    "llmCost": 0.001,
+    "avgLatency": 0.8,
+    "tokens": 16,
+    "avgTTFT": 0
+  },
+  "logs": [
+    {
+      "id": "1",
+      "name": "generate_content",
+      "timestamp": "2025-10-29T16:26:00Z",
+      "cost": 0.0001,
+      "latency": 0.8,
+      "tokens": 16,
+      "ttft": 0
+    }
+  ]
+}

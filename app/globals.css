@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
+/* ===========================
+   LIGHT MODE VARIABLES
+   ===========================
+   Default theme variables for light mode
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: white;
+  --foreground: #101010;
+  --muted: #595959;
+  --surface: rgb(243, 248, 255);
+  --surface-highlighted: white;
+  --surface-elevated: rgb(246, 250, 255);
+  --border-subtle: white;
+  --primary: rgb(1 97 239);
+  --primary-bold: rgb(1 70 175);
+  --secondary: rgb(0 70 175);
+  --accent: #5521b5;
+  --on-primary: white;
+  --placeholder: #6b7280;
+  --header-scroll-bg: rgba(255, 255, 255, 0.9);
+  --header-scroll-border: transparent;
 }
 
-@theme inline {
+/* ===========================
+   DARK MODE VARIABLES
+   ===========================
+   Override variables when .dark class is applied
+*/
+.dark {
+  --background: #030620;
+  --foreground: #e5ecf6;
+  --muted: rgba(229, 236, 246, 0.75);
+  --surface: #030620;
+  --surface-highlighted: rgb(15, 23, 42);
+  --surface-elevated: #374151;
+  --border-subtle: #4b5563;
+  --primary: #0161ef;
+  --primary-bold: rgb(1 84 207);
+  --secondary: rgb(191 219 254);
+  --accent: #AD78FF;
+  --on-primary: white;
+  --placeholder: #6b7280;
+  --header-scroll-bg: rgba(3, 6, 33, 0.9);
+  --header-scroll-border: rgba(107, 114, 128, 0.2);
+}
+
+/* ===========================
+   TAILWIND V4 THEME CONFIGURATION
+   ===========================
+   Register all customizations with Tailwind via @theme directive
+*/
+@theme {
+  /* Semantic color tokens */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-highlighted: var(--surface-highlighted);
+  --color-border-subtle: var(--border-subtle);
+  --color-primary: var(--primary);
+  --color-primary-bold: var(--primary-bold);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-on-primary: var(--on-primary);
+  --color-placeholder: var(--placeholder);
+
+  /* Font families */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ===========================
+   GLOBAL STYLES
+   ===========================
+*/
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
