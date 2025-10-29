@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm install:*)",
+      "WebSearch",
+      "WebFetch(domain:primer.style)",
+      "WebFetch(domain:brand.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(git add:*)",
+      "Bash(npm run dev:*)",
+      "Bash(git stash push:*)",
+      "Bash(node:*)",
+      "Bash(npm run check:*)",
+      "Bash(git commit:*)",
+      "Bash(npm run fix:*)",
+      "Bash(git reset:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm run test:a11y:*)",
+      "Bash(git restore:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git pull:*)",
+      "Read(//var/folders/8_/c950mck96dxb_4wnt1zjy88c0000gn/T/TemporaryItems/NSIRD_screencaptureui_zbSFVr/**)",
+      "Read(//var/folders/8_/c950mck96dxb_4wnt1zjy88c0000gn/T/TemporaryItems/NSIRD_screencaptureui_anI6gN/**)",
+      "Bash(npx playwright test:*)",
+      "Bash(npm run test:e2e:*)",
+      "Bash(wait)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": []
+  }
+}
