@@ -11,7 +11,7 @@ export default function Home() {
   const router = useRouter();
 
   const handleLogClick = (log: LogEntry) => {
-    router.push(`/log/${log.id}`);
+    router.push(`/logs?id=${log.id}`);
   };
 
   return (
