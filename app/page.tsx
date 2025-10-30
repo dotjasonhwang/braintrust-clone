@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { PageLayout } from "@/components/PageLayout";
 import { ObservabilityCard } from "@/components/ObservabilityCard";
 import { EvaluationCard } from "@/components/EvaluationCard";
 import projectData from "@/data/logs.json";
@@ -14,16 +15,18 @@ export default function Home() {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      {/* Left: Observability section */}
-      <ObservabilityCard
-        stats={projectData.stats}
-        logs={projectData.logs}
-        onLogClick={handleLogClick}
-      />
+    <PageLayout>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        {/* Left: Observability section */}
+        <ObservabilityCard
+          stats={projectData.stats}
+          logs={projectData.logs}
+          onLogClick={handleLogClick}
+        />
 
-      {/* Right: Evaluation section */}
-      <EvaluationCard />
-    </div>
+        {/* Right: Evaluation section */}
+        <EvaluationCard />
+      </div>
+    </PageLayout>
   );
 }

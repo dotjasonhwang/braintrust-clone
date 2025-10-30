@@ -3,7 +3,6 @@ import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
 import { ProjectHeader } from "@/components/ProjectHeader";
-import { Footer } from "@/components/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import projectData from "@/data/logs.json";
 
@@ -41,11 +40,8 @@ export default function RootLayout({
 
             {/* Page content */}
             <div className="flex-1 bg-background border-t border-l rounded-tl-md border-border-subtle">
-              <main className="m-3">{children}</main>
+              <main className="m-3 h-full">{children}</main>
             </div>
-
-            {/* Footer */}
-            <Footer />
           </div>
         </div>
         <Toaster />
