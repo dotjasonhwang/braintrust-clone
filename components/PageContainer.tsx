@@ -1,15 +1,15 @@
 import { Footer } from "./Footer";
 
 /**
- * Page layout wrapper component
+ * Page container component
  * Wraps page content with a footer at the bottom
  */
 
-interface PageLayoutProps {
+interface PageContainerProps {
   children: React.ReactNode;
 }
 
-export function PageLayout({ children }: PageLayoutProps) {
+export function PageContainer({ children }: PageContainerProps) {
   return (
     <div className="flex flex-col h-full">
       <div className="flex-1 overflow-auto">{children}</div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PageLayout } from "@/components/PageLayout";
+import { PageContainer } from "@/components/PageContainer";
 import { LogsToolbar } from "@/components/LogsToolbar";
 import { TimelineGraph } from "@/components/TimelineGraph";
 import { LogsTable } from "@/components/LogsTable";
@@ -25,13 +25,13 @@ export default function LogsPage() {
           selectedLog ? "flex-1" : "w-full"
         } overflow-hidden`}
       >
-        <PageLayout>
+        <PageContainer>
           <LogsToolbar />
           <TimelineGraph />
           <div className="mt-2 flex-1 overflow-auto">
             <LogsTable logs={projectData.logs} onLogClick={setSelectedLog} />
           </div>
-        </PageLayout>
+        </PageContainer>
       </div>
 
       {/* Right section: Detail panel (conditional) */}

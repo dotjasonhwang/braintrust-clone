@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { PageLayout } from "@/components/PageLayout";
+import { PageContainer } from "@/components/PageContainer";
 import { ObservabilityCard } from "@/components/ObservabilityCard";
 import { EvaluationCard } from "@/components/EvaluationCard";
 import projectData from "@/data/logs.json";
@@ -15,7 +15,7 @@ export default function Home() {
   };
 
   return (
-    <PageLayout>
+    <PageContainer>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Left: Observability section */}
         <ObservabilityCard
@@ -27,6 +27,6 @@ export default function Home() {
         {/* Right: Evaluation section */}
         <EvaluationCard />
       </div>
-    </PageLayout>
+    </PageContainer>
   );
 }
