@@ -19,6 +19,15 @@
       "latency": 0.8,
       "tokens": 16,
       "ttft": 0
+    },
+    {
+      "id": "2",
+      "name": "generate_content",
+      "timestamp": "2025-10-29T17:26:00Z",
+      "cost": 0.0001,
+      "latency": 0.4,
+      "tokens": 20,
+      "ttft": 0
     }
   ]
 }

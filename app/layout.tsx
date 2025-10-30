@@ -3,6 +3,7 @@ import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
 import { ProjectHeader } from "@/components/ProjectHeader";
+import { Toaster } from "@/components/ui/sonner";
 import projectData from "@/data/logs.json";
 
 const inter = Inter({
@@ -33,16 +34,17 @@ export default function RootLayout({
           <Sidebar />
 
           {/* Main content area */}
-          <div className="flex-1 flex flex-col bg-surface">
+          <div className="flex-1 flex flex-col">
             {/* Project header */}
             <ProjectHeader project={projectData.project} />
 
             {/* Page content */}
-            <div className="bg-background rounded-lg border border-border-subtle">
-              <main className="m-3 flex-1">{children}</main>
+            <div className="h-full bg-background border-t border-l rounded-tl-md border-border-subtle">
+              <main className="m-3">{children}</main>
             </div>
           </div>
         </div>
+        <Toaster />
       </body>
     </html>
   );
