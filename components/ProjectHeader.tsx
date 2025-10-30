@@ -7,9 +7,9 @@ import {
   BookOpen,
   CircleQuestionMark,
   Search,
-  User,
 } from "lucide-react";
 import { ProjectDropdown } from "./ProjectDropdown";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 import type { Project } from "@/types";
 import { showNotImplemented } from "@/lib/toast-utils";
 import {
@@ -55,7 +55,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
   };
 
   return (
-    <>
+    <TooltipProvider>
       <header className="bg-surface px-3 py-3">
         <div className="flex items-center justify-between">
           {/* Left: Project name */}
@@ -89,12 +89,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
             >
               <Search size={16} />
             </button>
-            <button
-              onClick={showNotImplemented}
-              className="rounded-full p-0.5 bg-secondary border-2 border-transparent hover:border-muted transition-colors"
-            >
-              <User size={16} className="text-white" />
-            </button>
+            <ThemeSwitcher />
           </div>
         </div>
 
@@ -138,6 +133,6 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
           </div>
         </div>
       </header>
-    </>
+    </TooltipProvider>
   );
 }

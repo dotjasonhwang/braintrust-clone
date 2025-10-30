@@ -28,8 +28,8 @@ export function EvaluationCard() {
         {/* Get started section */}
         <div className="flex flex-col items-start">
           {/* Icon with gradient background */}
-          <div className="w-8 h-8 rounded-sm bg-accent from-primary to-accent flex items-center justify-center">
-            <BarChart3 size={20} className="text-white" />
+          <div className="w-8 h-8 rounded-sm bg-primary from-primary to-accent flex items-center justify-center">
+            <BarChart3 size={20} className="text-foreground" />
           </div>
 
           {/* Title and description */}

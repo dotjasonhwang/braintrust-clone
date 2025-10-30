@@ -21,7 +21,7 @@ import {
 export const description = "A bar chart showing 7 days with time-bucketed data";
 
 // Configuration
-const HOUR_INCREMENT = 1; // Hours per bucket (easy to change)
+const HOUR_INCREMENT = 4; // Hours per bucket (easy to change)
 const DAYS_TO_SHOW = 7;
 
 // Generate bucketed chart data from timestamps

@@ -52,12 +52,15 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="w-60 p-2 bg-surface min-h-screen flex flex-col gap-0.5 justify-between">
+    <div className="w-60 p-2 bg-surface h-screen flex flex-col gap-0.5 justify-between text-foreground">
       {/* Top section */}
       <div>
         {/* User Profile Section */}
         <div className="flex items-center justify-between">
-          <button className="px-2 py-2 text-sm font-medium hover:bg-hover rounded flex items-center gap-1">
+          <button
+            onClick={showNotImplemented}
+            className="px-2 py-2 text-sm font-medium hover:bg-hover rounded flex items-center gap-1"
+          >
             <span>dotjasonhwang</span>
             <ChevronDown size={14} className="text-muted" />
           </button>
@@ -86,11 +89,9 @@ export function Sidebar() {
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.path;
-              return (
-                <Link
-                  key={item.name}
-                  href={item.path}
-                  className={`
+              const isImplemented = item.path === "/" || item.path === "/logs";
+
+              const className = `
                 w-full flex items-center gap-2 p-1.5 rounded text-xs font-medium
                 transition-colors
                 ${
@@ -98,11 +99,26 @@ export function Sidebar() {
                     ? "bg-surface-elevated text-foreground"
                     : "text-muted hover:bg-hover hover:text-foreground"
                 }
-              `}
+              `;
+
+              if (isImplemented) {
+                return (
+                  <Link key={item.name} href={item.path} className={className}>
+                    <Icon size={16} />
+                    <span>{item.name}</span>
+                  </Link>
+                );
+              }
+
+              return (
+                <button
+                  key={item.name}
+                  onClick={showNotImplemented}
+                  className={className}
                 >
                   <Icon size={16} />
                   <span>{item.name}</span>
-                </Link>
+                </button>
               );
             })}
           </div>

@@ -10,17 +10,17 @@ import { showNotImplemented } from "@/lib/toast-utils";
 
 export function Footer() {
   const footerLinks = [
-    { label: "Home", href: "/" },
-    { label: "Docs", href: "/docs" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Blog", href: "/blog" },
-    { label: "Request a demo", href: "/demo" },
-    { label: "Discord", href: "/discord" },
-    { label: "Changelog", href: "/changelog" },
-    { label: "Status", href: "/status" },
-    { label: "Trust center", href: "/trust" },
-    { label: "Privacy", href: "/privacy" },
-    { label: "Terms", href: "/terms" },
+    { label: "Home", href: { undefined } },
+    { label: "Docs", href: { undefined } },
+    { label: "Pricing", href: { undefined } },
+    { label: "Blog", href: { undefined } },
+    { label: "Request a demo", href: { undefined } },
+    { label: "Discord", href: { undefined } },
+    { label: "Changelog", href: { undefined } },
+    { label: "Status", href: { undefined } },
+    { label: "Trust center", href: { undefined } },
+    { label: "Privacy", href: { undefined } },
+    { label: "Terms", href: { undefined } },
   ];
 
   return (

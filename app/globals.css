@@ -14,12 +14,12 @@
   --background: white;
   --foreground: #0d0d0d;
   --muted: #595959;
-  --surface: rgb(243, 248, 255);
-  --hover: #18181b;
-  --surface-elevated: rgb(246, 250, 255);
-  --border-subtle: white;
-  --primary: rgb(1 97 239);
-  --secondary: rgb(1 70 175);
+  --surface: #fafafa;
+  --hover: #efeff2;
+  --surface-elevated: #e4e4e7;
+  --border-subtle: #e5e7eb;
+  --primary: #c7d7ff;
+  --secondary: #4257f0;
   --accent: #232cd9;
   --on-primary: white;
   --placeholder: #6b7280;
@@ -37,7 +37,7 @@
   --border: #e5e7eb;
   --input: #e5e7eb;
   --ring: rgb(1 97 239);
-  --chart-1: #f97316;
+  --chart-1: #2b1eeb;
   --chart-2: #06b6d4;
   --chart-3: #3b82f6;
   --chart-4: #eab308;
