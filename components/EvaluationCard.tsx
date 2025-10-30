@@ -44,7 +44,7 @@ export function EvaluationCard() {
           <div className="mt-4 flex flex-col gap-2 w-full max-w-md">
             <button
               onClick={showNotImplemented}
-              className="w-full px-4 py-1 text-sm text-foreground bg-background hover:bg-surface-hover border border-border-subtle rounded transition-colors flex justify-start items-center gap-2"
+              className="w-full px-4 py-1 text-sm text-foreground bg-background hover:bg-hover border border-border-subtle rounded transition-colors flex justify-start items-center gap-2"
             >
               <MessageSquareText size={14} />
               <span>Add your prompt</span>
@@ -52,7 +52,7 @@ export function EvaluationCard() {
 
             <button
               onClick={showNotImplemented}
-              className="w-full px-4 py-1 text-sm text-foreground bg-background hover:bg-surface-hover border border-border-subtle rounded transition-colors flex justify-start items-center gap-2"
+              className="w-full px-4 py-1 text-sm text-foreground bg-background hover:bg-hover border border-border-subtle rounded transition-colors flex justify-start items-center gap-2"
             >
               <Upload size={14} />
               <span>Upload data</span>
@@ -60,7 +60,7 @@ export function EvaluationCard() {
 
             <button
               onClick={showNotImplemented}
-              className="w-full px-4 py-1 text-sm text-foreground bg-background hover:bg-surface-hover border border-border-subtle rounded transition-colors flex justify-start items-center gap-2"
+              className="w-full px-4 py-1 text-sm text-foreground bg-background hover:bg-hover border border-border-subtle rounded transition-colors flex justify-start items-center gap-2"
             >
               <FlaskConical size={14} />
               <span>Create experiment</span>

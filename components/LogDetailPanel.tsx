@@ -75,7 +75,7 @@ export function LogDetailPanel({ log, onClose }: LogDetailPanelProps) {
         </div>
         <button
           onClick={onClose}
-          className="text-muted hover:text-foreground hover:bg-surface-hover p-1 rounded"
+          className="text-muted hover:text-foreground hover:bg-hover p-1 rounded"
         >
           <X size={16} />
         </button>
@@ -143,22 +143,22 @@ export function LogDetailPanel({ log, onClose }: LogDetailPanelProps) {
 
               {/* Action buttons */}
               <div className="flex items-center gap-2 flex-wrap">
-                <button className="text-xs px-2 py-1 bg-surface-elevated hover:bg-surface-hover rounded border border-border-subtle text-foreground flex items-center gap-1">
+                <button className="text-xs px-2 py-1 bg-surface-elevated hover:bg-hover rounded border border-border-subtle text-foreground flex items-center gap-1">
                   <Plus size={12} />
                   Dataset
                 </button>
-                <button className="text-xs px-2 py-1 bg-surface-elevated hover:bg-surface-hover rounded border border-border-subtle text-foreground">
+                <button className="text-xs px-2 py-1 bg-surface-elevated hover:bg-hover rounded border border-border-subtle text-foreground">
                   ...
                 </button>
-                <button className="text-xs px-2 py-1 bg-surface-elevated hover:bg-surface-hover rounded border border-border-subtle text-foreground flex items-center gap-1">
+                <button className="text-xs px-2 py-1 bg-surface-elevated hover:bg-hover rounded border border-border-subtle text-foreground flex items-center gap-1">
                   <Plus size={12} />
                   Playground
                 </button>
-                <button className="text-xs px-2 py-1 bg-surface-elevated hover:bg-surface-hover rounded border border-border-subtle text-foreground flex items-center gap-1">
+                <button className="text-xs px-2 py-1 bg-surface-elevated hover:bg-hover rounded border border-border-subtle text-foreground flex items-center gap-1">
                   <ArrowUpRight size={12} />
                   Run
                 </button>
-                <button className="text-xs px-2 py-1 bg-surface-elevated hover:bg-surface-hover rounded border border-border-subtle text-foreground">
+                <button className="text-xs px-2 py-1 bg-surface-elevated hover:bg-hover rounded border border-border-subtle text-foreground">
                   Flag for review
                 </button>
               </div>
@@ -168,7 +168,7 @@ export function LogDetailPanel({ log, onClose }: LogDetailPanelProps) {
             <div className="border border-border-subtle rounded-lg">
               <button
                 onClick={() => toggleSection("metrics")}
-                className="w-full flex items-center justify-between px-3 py-2 text-xs text-foreground hover:bg-surface-hover"
+                className="w-full flex items-center justify-between px-3 py-2 text-xs text-foreground hover:bg-hover"
               >
                 <span className="text-muted">Metrics</span>
                 {expandedSections.metrics ? (
@@ -187,7 +187,9 @@ export function LogDetailPanel({ log, onClose }: LogDetailPanelProps) {
                   </div>
                   <div>
                     <div className="text-xs text-muted">Duration</div>
-                    <div className="text-xs text-foreground">{log.latency}s</div>
+                    <div className="text-xs text-foreground">
+                      {log.latency}s
+                    </div>
                   </div>
                   <div>
                     <div className="text-xs text-muted">Total tokens</div>
@@ -219,7 +221,7 @@ export function LogDetailPanel({ log, onClose }: LogDetailPanelProps) {
             <div className="border border-border-subtle rounded-lg">
               <button
                 onClick={() => toggleSection("input")}
-                className="w-full flex items-center justify-between px-3 py-2 text-xs text-foreground hover:bg-surface-hover"
+                className="w-full flex items-center justify-between px-3 py-2 text-xs text-foreground hover:bg-hover"
               >
                 <span className="text-muted">Input</span>
                 {expandedSections.input ? (
@@ -245,7 +247,7 @@ export function LogDetailPanel({ log, onClose }: LogDetailPanelProps) {
             <div className="border border-border-subtle rounded-lg">
               <button
                 onClick={() => toggleSection("output")}
-                className="w-full flex items-center justify-between px-3 py-2 text-xs text-foreground hover:bg-surface-hover"
+                className="w-full flex items-center justify-between px-3 py-2 text-xs text-foreground hover:bg-hover"
               >
                 <span className="text-muted">Output</span>
                 {expandedSections.output ? (
@@ -271,7 +273,7 @@ export function LogDetailPanel({ log, onClose }: LogDetailPanelProps) {
             <div className="border border-border-subtle rounded-lg">
               <button
                 onClick={() => toggleSection("expected")}
-                className="w-full flex items-center justify-between px-3 py-2 text-xs text-foreground hover:bg-surface-hover"
+                className="w-full flex items-center justify-between px-3 py-2 text-xs text-foreground hover:bg-hover"
               >
                 <span className="text-muted">Expected</span>
                 {expandedSections.expected ? (

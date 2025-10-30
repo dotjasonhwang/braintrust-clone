@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { MoreHorizontal, Edit2, Copy, Lock, Trash2 } from "lucide-react";
+import { showNotImplemented } from "@/lib/toast-utils";
 
 /**
  * Project dropdown menu component
@@ -43,7 +44,7 @@ export function ProjectDropdown() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="h-full text-muted hover:bg-surface-hover px-1 rounded"
+        className="h-full text-muted hover:bg-hover px-1 rounded"
       >
         <MoreHorizontal size={16} />
       </button>
@@ -55,8 +56,11 @@ export function ProjectDropdown() {
             return (
               <button
                 key={index}
-                className="w-full px-3 py-2 text-xs text-foreground hover:bg-surface-hover rounded flex items-center gap-2 text-left"
-                onClick={() => setIsOpen(false)}
+                className="w-full px-3 py-2 text-xs text-foreground hover:bg-hover rounded flex items-center gap-2 text-left"
+                onClick={() => {
+                  showNotImplemented();
+                  setIsOpen(false);
+                }}
               >
                 <Icon size={14} />
                 <span>{item.label}</span>

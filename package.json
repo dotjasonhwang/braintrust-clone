@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@google/genai": "^1.27.0",
+    "@radix-ui/react-tooltip": "^1.2.8",
     "braintrust": "^0.4.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

@@ -15,11 +15,11 @@
   --foreground: #0d0d0d;
   --muted: #595959;
   --surface: rgb(243, 248, 255);
-  --surface-hover: #18181b;
+  --hover: #18181b;
   --surface-elevated: rgb(246, 250, 255);
   --border-subtle: white;
   --primary: rgb(1 97 239);
-  --primary-bold: rgb(1 70 175);
+  --secondary: rgb(1 70 175);
   --accent: #232cd9;
   --on-primary: white;
   --placeholder: #6b7280;
@@ -31,8 +31,6 @@
   --popover: white;
   --popover-foreground: #0d0d0d;
   --primary-foreground: white;
-  --secondary: rgb(243, 248, 255);
-  --secondary-foreground: #0d0d0d;
   --muted-foreground: #595959;
   --accent-foreground: white;
   --destructive: #ef4444;
@@ -65,11 +63,11 @@
   --foreground: #e8e8e8;
   --muted: rgba(229, 236, 246, 0.75);
   --surface: #09090b;
-  --surface-hover: #18181b;
+  --hover: #18181b;
   --surface-elevated: #27272a;
   --border-subtle: hsl(220, 5%, 11%);
   --primary: #1e21d2;
-  --primary-bold: rgb(1 84 207);
+  --secondary: #7e95fc;
   --accent: #1e21d2;
   --on-primary: white;
   --placeholder: #6b7280;
@@ -80,8 +78,6 @@
   --popover: #09090b;
   --popover-foreground: #e8e8e8;
   --primary-foreground: white;
-  --secondary: #27272a;
-  --secondary-foreground: #e8e8e8;
   --muted-foreground: rgba(229, 236, 246, 0.75);
   --accent-foreground: white;
   --destructive: #ef4444;
@@ -114,11 +110,11 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
-  --color-surface-hover: var(--surface-hover);
+  --color-hover: var(--hover);
   --color-surface-elevated: var(--surface-elevated);
   --color-border-subtle: var(--border-subtle);
   --color-primary: var(--primary);
-  --color-primary-bold: var(--primary-bold);
+  --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-on-primary: var(--on-primary);
   --color-placeholder: var(--placeholder);
@@ -150,8 +146,6 @@ body {
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);

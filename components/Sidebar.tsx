@@ -50,7 +50,7 @@ export function Sidebar() {
       {/* User Profile Section */}
       <div className="flex items-center gap-2 mt-1">
         <div className="flex flex-col">
-          <button className="px-2 py-2 text-sm font-medium hover:bg-surface-hover rounded">
+          <button className="px-2 py-2 text-sm font-medium hover:bg-hover rounded">
             dotjasonhwang
           </button>
         </div>
@@ -59,7 +59,7 @@ export function Sidebar() {
       {/* Project Selector */}
       <div className="mt-2 flex flex-col gap-0.5">
         <div className="px-2 text-muted text-xs">Project</div>
-        <button className="py-2 px-2 w-full flex items-center gap-2 rounded text-sm font-medium hover:bg-surface-hover transition-colors">
+        <button className="py-2 px-2 w-full flex items-center gap-2 rounded text-sm font-medium hover:bg-hover transition-colors">
           My Project
         </button>
       </div>
@@ -80,7 +80,7 @@ export function Sidebar() {
                 ${
                   isActive
                     ? "bg-surface-elevated text-foreground"
-                    : "text-muted hover:bg-surface-hover hover:text-foreground"
+                    : "text-muted hover:bg-hover hover:text-foreground"
                 }
               `}
               >

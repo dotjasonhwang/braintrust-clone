@@ -29,7 +29,7 @@ export function LogEntry({ log, onClick }: LogEntryProps) {
   return (
     <button
       onClick={() => onClick?.(log)}
-      className="w-full flex items-center justify-between px-4 py-2 hover:bg-surface-hover transition-colors text-left border-b border-border-subtle last:border-b-0"
+      className="w-full flex items-center justify-between px-4 py-2 hover:bg-hover transition-colors text-left border-b border-border-subtle last:border-b-0"
     >
       <div className="flex items-center gap-2">
         <Activity size={12} className="text-muted fill-muted" />
