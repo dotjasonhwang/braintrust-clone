@@ -3,7 +3,7 @@
 import { useState } from "react";
 import {
   X,
-  Circle,
+  MessageCircle,
   ChevronDown,
   ChevronRight,
   Settings,
@@ -131,7 +131,7 @@ export function LogDetailPanel({ log, onClose }: LogDetailPanelProps) {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 rounded bg-purple-600 flex items-center justify-center">
-                  <Circle size={10} className="text-white fill-white" />
+                  <MessageCircle size={10} className="text-white fill-white" />
                 </div>
                 <div>
                   <h3 className="text-sm font-medium text-foreground">

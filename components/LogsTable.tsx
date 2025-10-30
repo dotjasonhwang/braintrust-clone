@@ -1,6 +1,6 @@
 "use client";
 
-import { Circle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import type { LogEntry } from "@/types";
 
 /**
@@ -16,10 +16,14 @@ interface LogsTableProps {
 export function LogsTable({ logs, onLogClick }: LogsTableProps) {
   // Calculate summary stats
   const totalTraces = logs.length;
-  const avgDuration = logs.length > 0
-    ? logs.reduce((acc, log) => acc + log.latency, 0) / logs.length
-    : 0;
-  const totalLLMCalls = logs.reduce((acc, log) => acc + (log.tokens > 0 ? 1 : 0), 0);
+  const avgDuration =
+    logs.length > 0
+      ? logs.reduce((acc, log) => acc + log.latency, 0) / logs.length
+      : 0;
+  const totalLLMCalls = logs.reduce(
+    (acc, log) => acc + (log.tokens > 0 ? 1 : 0),
+    0
+  );
 
   // Format timestamp to relative time
   const formatTimeAgo = (timestamp: string) => {
@@ -45,7 +49,9 @@ export function LogsTable({ logs, onLogClick }: LogsTableProps) {
                   <input type="checkbox" className="w-3 h-3" />
                   <span>Created</span>
                 </div>
-                <div className="text-muted font-mono mt-1">{totalTraces} trace</div>
+                <div className="text-muted font-mono mt-1">
+                  {totalTraces} trace
+                </div>
               </th>
               <th className="text-left px-4 py-3 text-muted font-normal">
                 <div className="flex items-center gap-1">
@@ -76,7 +82,9 @@ export function LogsTable({ logs, onLogClick }: LogsTableProps) {
                 <div className="flex items-center gap-1">
                   <span>Duration</span>
                 </div>
-                <div className="text-muted font-mono mt-1">{avgDuration.toFixed(3)}s p50</div>
+                <div className="text-muted font-mono mt-1">
+                  {avgDuration.toFixed(3)}s p50
+                </div>
               </th>
               <th className="text-left px-4 py-3 text-muted font-normal">
                 <div className="flex items-center gap-1">
@@ -92,7 +100,9 @@ export function LogsTable({ logs, onLogClick }: LogsTableProps) {
                 <div className="flex items-center gap-1">
                   <span>LLM calls</span>
                 </div>
-                <div className="text-muted font-mono mt-1">{totalLLMCalls} SUM</div>
+                <div className="text-muted font-mono mt-1">
+                  {totalLLMCalls} SUM
+                </div>
               </th>
             </tr>
           </thead>
@@ -107,15 +117,22 @@ export function LogsTable({ logs, onLogClick }: LogsTableProps) {
                   <div className="flex items-center gap-2">
                     <input type="checkbox" className="w-3 h-3" />
                     <span className="text-foreground">{index + 1}</span>
-                    <span className="text-muted">{formatTimeAgo(log.timestamp)}</span>
+                    <span className="text-muted">
+                      {formatTimeAgo(log.timestamp)}
+                    </span>
                   </div>
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded bg-purple-600 flex items-center justify-center">
-                      <Circle size={8} className="text-white fill-white" />
+                    <div className="w-4 h-4 rounded bg-primary flex items-center justify-center">
+                      <MessageCircle
+                        size={8}
+                        className="text-white fill-white"
+                      />
                     </div>
-                    <span className="text-foreground font-mono">{log.name}</span>
+                    <span className="text-foreground font-mono">
+                      {log.name}
+                    </span>
                   </div>
                 </td>
                 <td className="px-4 py-3">
@@ -144,7 +161,9 @@ export function LogsTable({ logs, onLogClick }: LogsTableProps) {
                   <span className="text-muted">-</span>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="text-foreground">{log.tokens > 0 ? 1 : 0}</span>
+                  <span className="text-foreground">
+                    {log.tokens > 0 ? 1 : 0}
+                  </span>
                 </td>
               </tr>
             ))}
