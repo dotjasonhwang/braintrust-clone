@@ -23,7 +23,11 @@ export default function LogsPage() {
     <div className="h-full w-full">
       <PanelGroup direction="horizontal">
         {/* Main content panel */}
-        <Panel defaultSize={100} minSize={50}>
+        <Panel
+          defaultSize={100}
+          minSize={50}
+          className={selectedLog ? "pr-3" : ""}
+        >
           <PageContainer>
             <LogsToolbar />
             <TimelineGraph />
@@ -37,7 +41,7 @@ export default function LogsPage() {
         {selectedLog && (
           <>
             <PanelResizeHandle className="w-1 bg-border-subtle hover:bg-primary transition-colors" />
-            <Panel defaultSize={35} minSize={25} maxSize={60}>
+            <Panel defaultSize={50} minSize={25} maxSize={60}>
               <LogDetailPanel
                 log={selectedLog}
                 onClose={() => setSelectedLog(null)}
