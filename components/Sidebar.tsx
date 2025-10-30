@@ -14,8 +14,12 @@ import {
   Zap,
   MoreHorizontal,
   Settings,
+  ChevronDown,
+  LayoutGrid,
+  Square,
   type LucideIcon,
 } from "lucide-react";
+import { showNotImplemented } from "@/lib/toast-utils";
 
 /**
  * Sidebar navigation component
@@ -46,12 +50,19 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="w-48 px-2 bg-surface min-h-screen flex flex-col gap-0.5">
+    <div className="w-60 px-2 bg-surface min-h-screen flex flex-col gap-0.5">
       {/* User Profile Section */}
-      <div className="flex items-center gap-2 mt-1">
-        <div className="flex flex-col">
-          <button className="px-2 py-2 text-sm font-medium hover:bg-hover rounded">
-            dotjasonhwang
+      <div className="flex items-center justify-between mt-2">
+        <button className="px-2 py-2 text-sm font-medium hover:bg-hover rounded flex items-center gap-1">
+          <span>dotjasonhwang</span>
+          <ChevronDown size={14} className="text-muted" />
+        </button>
+        <div className="flex items-center gap-1">
+          <button className="text-muted hover:bg-hover rounded-md p-2">
+            <LayoutGrid size={16} />
+          </button>
+          <button className="text-muted hover:bg-hover rounded-md p-2">
+            <Square size={16} />
           </button>
         </div>
       </div>
@@ -59,13 +70,14 @@ export function Sidebar() {
       {/* Project Selector */}
       <div className="mt-2 flex flex-col gap-0.5">
         <div className="px-2 text-muted text-xs">Project</div>
-        <button className="py-2 px-2 w-full flex items-center gap-2 rounded text-sm font-medium hover:bg-hover transition-colors">
-          My Project
+        <button className="py-2 px-2 w-full flex items-center justify-between rounded text-sm font-medium hover:bg-hover transition-colors">
+          <span>My Project</span>
+          <ChevronDown size={14} className="text-muted" />
         </button>
       </div>
 
       {/* Navigation Menu */}
-      <nav className="flex-1 py-2">
+      <nav className="flex-1 py-1">
         <div className="space-y-0.5">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -75,7 +87,7 @@ export function Sidebar() {
                 key={item.name}
                 href={item.path}
                 className={`
-                w-full flex items-center gap-2 p-2 rounded text-xs font-medium
+                w-full flex items-center gap-2 p-1.5 rounded text-xs font-medium
                 transition-colors
                 ${
                   isActive
