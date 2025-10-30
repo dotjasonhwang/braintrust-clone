@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { PageContainer } from "@/components/PageContainer";
 import { LogsToolbar } from "@/components/LogsToolbar";
 import { TimelineGraph } from "@/components/TimelineGraph";
@@ -12,37 +13,39 @@ import type { LogEntry } from "@/types";
 /**
  * Logs page
  * Displays detailed logs table with filtering and timeline visualization
+ * Uses resizable panels for detail view
  */
 
 export default function LogsPage() {
   const [selectedLog, setSelectedLog] = useState<LogEntry | null>(null);
 
   return (
-    <div className="flex h-full w-full overflow-hidden">
-      {/* Left section: Toolbar + Timeline + Table */}
-      <div
-        className={`${
-          selectedLog ? "flex-1" : "w-full"
-        } overflow-hidden`}
-      >
-        <PageContainer>
-          <LogsToolbar />
-          <TimelineGraph />
-          <div className="mt-2 flex-1 overflow-auto">
-            <LogsTable logs={projectData.logs} onLogClick={setSelectedLog} />
-          </div>
-        </PageContainer>
-      </div>
+    <div className="h-full w-full">
+      <PanelGroup direction="horizontal">
+        {/* Main content panel */}
+        <Panel defaultSize={100} minSize={50}>
+          <PageContainer>
+            <LogsToolbar />
+            <TimelineGraph />
+            <div className="mt-2 flex-1 overflow-auto">
+              <LogsTable logs={projectData.logs} onLogClick={setSelectedLog} />
+            </div>
+          </PageContainer>
+        </Panel>
 
-      {/* Right section: Detail panel (conditional) */}
-      {selectedLog && (
-        <div className="w-[500px] shrink-0">
-          <LogDetailPanel
-            log={selectedLog}
-            onClose={() => setSelectedLog(null)}
-          />
-        </div>
-      )}
+        {/* Resizable detail panel (conditional) */}
+        {selectedLog && (
+          <>
+            <PanelResizeHandle className="w-1 bg-border-subtle hover:bg-primary transition-colors" />
+            <Panel defaultSize={35} minSize={25} maxSize={60}>
+              <LogDetailPanel
+                log={selectedLog}
+                onClose={() => setSelectedLog(null)}
+              />
+            </Panel>
+          </>
+        )}
+      </PanelGroup>
     </div>
   );
 }

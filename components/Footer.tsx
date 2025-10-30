@@ -24,7 +24,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="py-4 px-6">
+    <footer className="py-4">
       <div className="flex items-center justify-start gap-4">
         {/* Logo */}
         <div className="text-secondary text-sm font-medium">
