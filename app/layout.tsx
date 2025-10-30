@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Sidebar } from "@/components/Sidebar";
+import { ProjectHeader } from "@/components/ProjectHeader";
+import projectData from "@/data/logs.json";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,10 +27,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${inter.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
+        <div className="flex min-h-screen bg-background">
+          {/* Sidebar */}
+          <Sidebar />
+
+          {/* Main content area */}
+          <div className="flex-1 flex flex-col bg-surface">
+            {/* Project header */}
+            <ProjectHeader project={projectData.project} />
+
+            {/* Page content */}
+            <div className="bg-background rounded-lg border border-border-subtle">
+              <main className="m-3 flex-1">{children}</main>
+            </div>
+          </div>
+        </div>
       </body>
     </html>
   );

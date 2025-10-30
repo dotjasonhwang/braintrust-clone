@@ -4,6 +4,7 @@ import { BarChart3, FileText } from "lucide-react";
 import { StatCard } from "./StatCard";
 import { TimelineGraph } from "./TimelineGraph";
 import { LogEntry } from "./LogEntry";
+import Link from "next/link";
 import type { ObservabilityStats, LogEntry as LogEntryType } from "@/types";
 
 /**
@@ -28,18 +29,24 @@ export function ObservabilityCard({
         {/* Header with tabs */}
         <div className="px-6 py-4">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-md font-semibold text-foreground">
+            <h2 className="text-sm font-semibold text-foreground">
               Observability
             </h2>
             <div className="flex gap-2">
-              <button className="px-3 py-1 text-xs text-muted hover:bg-surface-hover border border-border-subtle rounded transition-colors flex items-center gap-2">
+              <Link
+                href="/monitor"
+                className="px-3 py-1 text-xs text-muted hover:bg-surface-hover border border-border-subtle rounded transition-colors flex items-center gap-2"
+              >
                 <BarChart3 size={14} />
                 Monitor
-              </button>
-              <button className="px-3 py-1 text-xs text-muted hover:bg-surface-hover border border-border-subtle rounded transition-colors flex items-center gap-2">
+              </Link>
+              <Link
+                href="/logs"
+                className="px-3 py-1 text-xs text-muted hover:bg-surface-hover border border-border-subtle rounded transition-colors flex items-center gap-2"
+              >
                 <FileText size={14} />
                 Logs
-              </button>
+              </Link>
             </div>
           </div>
 

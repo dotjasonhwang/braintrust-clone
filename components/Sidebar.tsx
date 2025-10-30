@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import {
   Home,
   Activity,
@@ -23,30 +25,32 @@ import {
 interface NavItem {
   name: string;
   icon: LucideIcon;
-  active?: boolean;
+  path: string;
 }
 
 const navItems: NavItem[] = [
-  { name: "Overview", icon: Home, active: true },
-  { name: "Logs", icon: Activity },
-  { name: "Monitor", icon: BarChart3 },
-  { name: "Review", icon: CheckCircle },
-  { name: "Playgrounds", icon: Gamepad2 },
-  { name: "Experiments", icon: FlaskConical },
-  { name: "Datasets", icon: Folder },
-  { name: "Prompts", icon: MessageSquare },
-  { name: "Scorers", icon: Zap },
-  { name: "More", icon: MoreHorizontal },
-  { name: "Configuration", icon: Settings },
+  { name: "Overview", icon: Home, path: "/" },
+  { name: "Logs", icon: Activity, path: "/logs" },
+  { name: "Monitor", icon: BarChart3, path: "/monitor" },
+  { name: "Review", icon: CheckCircle, path: "/review" },
+  { name: "Playgrounds", icon: Gamepad2, path: "/playgrounds" },
+  { name: "Experiments", icon: FlaskConical, path: "/experiments" },
+  { name: "Datasets", icon: Folder, path: "/datasets" },
+  { name: "Prompts", icon: MessageSquare, path: "/prompts" },
+  { name: "Scorers", icon: Zap, path: "/scorers" },
+  { name: "More", icon: MoreHorizontal, path: "/more" },
+  { name: "Configuration", icon: Settings, path: "/configuration" },
 ];
 
 export function Sidebar() {
+  const pathname = usePathname();
+
   return (
-    <div className="w-48 px-2 bg-surface border-r border-border-subtle min-h-screen flex flex-col gap-0.5">
+    <div className="w-48 px-2 bg-surface min-h-screen flex flex-col gap-0.5">
       {/* User Profile Section */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 mt-1">
         <div className="flex flex-col">
-          <button className="px-2 py-2 text-xs font-medium text-foreground">
+          <button className="px-2 py-2 text-sm font-medium hover:bg-surface-hover rounded">
             dotjasonhwang
           </button>
         </div>
@@ -55,7 +59,7 @@ export function Sidebar() {
       {/* Project Selector */}
       <div className="mt-2 flex flex-col gap-0.5">
         <div className="px-2 text-muted text-xs">Project</div>
-        <button className="py-2 px-2 w-full flex items-center gap-2 rounded text-xs text-muted hover:bg-surface-elevated transition-colors">
+        <button className="py-2 px-2 w-full flex items-center gap-2 rounded text-sm font-medium hover:bg-surface-hover transition-colors">
           My Project
         </button>
       </div>
@@ -65,14 +69,16 @@ export function Sidebar() {
         <div className="space-y-0.5">
           {navItems.map((item) => {
             const Icon = item.icon;
+            const isActive = pathname === item.path;
             return (
-              <button
+              <Link
                 key={item.name}
+                href={item.path}
                 className={`
-                w-full flex items-center gap-2 p-2 rounded text-xs
+                w-full flex items-center gap-2 p-2 rounded text-xs font-medium
                 transition-colors
                 ${
-                  item.active
+                  isActive
                     ? "bg-surface-elevated text-foreground"
                     : "text-muted hover:bg-surface-hover hover:text-foreground"
                 }
@@ -80,7 +86,7 @@ export function Sidebar() {
               >
                 <Icon size={16} />
                 <span>{item.name}</span>
-              </button>
+              </Link>
             );
           })}
         </div>
