@@ -56,7 +56,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
 
   return (
     <>
-      <header className="bg-surface px-2 py-3">
+      <header className="bg-surface px-3 py-3">
         <div className="flex items-center justify-between">
           {/* Left: Project name */}
           <h1 className="text-sm text-muted font-semibold">My Project</h1>
@@ -110,7 +110,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
           <div className="flex items-center gap-4">
             {/* Project ID */}
 
-            <Tooltip delayDuration={500}>
+            <Tooltip delayDuration={200}>
               <TooltipTrigger asChild>
                 <button
                   onClick={handleCopyId}

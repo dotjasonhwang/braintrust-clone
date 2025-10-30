@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { LogsToolbar } from "@/components/LogsToolbar";
-import { LogsTimeline } from "@/components/LogsTimeline";
+import { TimelineGraph } from "@/components/TimelineGraph";
 import { LogsTable } from "@/components/LogsTable";
 import { LogDetailPanel } from "@/components/LogDetailPanel";
 import projectData from "@/data/logs.json";
@@ -19,10 +19,14 @@ export default function LogsPage() {
   return (
     <div className="flex h-full w-full overflow-hidden">
       {/* Left section: Toolbar + Timeline + Table */}
-      <div className={`flex flex-col ${selectedLog ? "flex-1" : "w-full"} overflow-hidden`}>
+      <div
+        className={`flex flex-col ${
+          selectedLog ? "flex-1" : "w-full"
+        } overflow-hidden`}
+      >
         <LogsToolbar />
-        <LogsTimeline />
-        <div className="flex-1 overflow-auto">
+        <TimelineGraph />
+        <div className="mt-2 flex-1 overflow-auto">
           <LogsTable logs={projectData.logs} onLogClick={setSelectedLog} />
         </div>
       </div>

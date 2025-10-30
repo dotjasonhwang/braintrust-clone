@@ -30,13 +30,6 @@ export function LogsTimeline() {
 
       {/* Timeline visualization area */}
       <div className="h-16 bg-background rounded flex items-end gap-1 px-2">
-        {/* Day labels below */}
-        <div className="absolute bottom-2 left-0 right-0 flex justify-around text-xs text-muted">
-          {timelineData.map((data, index) => (
-            <span key={index}>{data.day}</span>
-          ))}
-        </div>
-
         {/* Activity bar - showing one activity spike */}
         <div className="flex-1" />
         <div className="flex-1" />
