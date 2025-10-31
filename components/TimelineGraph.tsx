@@ -79,10 +79,14 @@ const generateChartData = (dataPoints: DataPoint[] = []) => {
     // Position bar in the center of its bucket within the day
     const position = day + (bucketInDay + 0.5) / bucketsPerDay;
 
+    // Calculate the timestamp for this bucket
+    const bucketTimestamp = startTime + bucket * bucketSizeMs;
+
     data.push({
       position: position,
       day: "",
       traces: bucketCounts[bucket],
+      timestamp: bucketTimestamp,
       isBoundary: false,
     });
   }
@@ -111,7 +115,7 @@ const chartData = generateChartData(sampleData);
 
 const chartConfig = {
   traces: {
-    label: "Traces",
+    label: "Spans",
     color: "var(--chart-1)",
   },
 } satisfies ChartConfig;
@@ -144,7 +148,29 @@ export function TimelineGraph() {
           />
           <ChartTooltip
             cursor={false}
-            content={<ChartTooltipContent hideLabel />}
+            content={
+              <ChartTooltipContent
+                labelFormatter={(_, payload) => {
+                  if (payload && payload.length > 0) {
+                    const dataPoint = payload[0].payload;
+                    if (dataPoint.timestamp) {
+                      const date = new Date(dataPoint.timestamp);
+                      return `Ran ${date.toLocaleString("en-US", {
+                        month: "numeric",
+                        day: "numeric",
+                        year: "numeric",
+                        hour: "numeric",
+                        minute: "2-digit",
+                        second: "2-digit",
+                        hour12: true,
+                        timeZoneName: "short",
+                      })}`;
+                    }
+                  }
+                  return "";
+                }}
+              />
+            }
           />
           <Bar dataKey="traces" fill="var(--color-traces)" />
         </BarChart>
