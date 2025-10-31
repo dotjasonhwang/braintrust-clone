@@ -16,9 +16,9 @@ import {
 
 export function LogsToolbar() {
   return (
-    <div className="flex items-center justify-between gap-4 mb-4">
+    <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
       {/* Left side controls */}
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         {/* Default view dropdown */}
         <button className="px-3 py-1.5 text-xs bg-surface border border-border-subtle rounded flex items-center gap-2 hover:bg-surface-elevated transition-colors">
           <span className="text-foreground">Default view</span>
@@ -61,7 +61,7 @@ export function LogsToolbar() {
       </div>
 
       {/* Right side controls */}
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         {/* Search input */}
         <div className="relative">
           <Search
