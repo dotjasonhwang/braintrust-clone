@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  BarChart3,
-  MessageSquareText,
-  Upload,
-  FlaskConical,
-} from "lucide-react";
+import { MessageCircle, TrendingUp, Database, Beaker } from "lucide-react";
 import { showNotImplemented } from "@/lib/toast-utils";
 
 /**
@@ -29,7 +24,7 @@ export function EvaluationCard() {
         <div className="flex flex-col items-start">
           {/* Icon with gradient background */}
           <div className="w-8 h-8 rounded-sm bg-primary from-primary to-accent flex items-center justify-center">
-            <BarChart3 size={20} className="text-foreground" />
+            <TrendingUp size={20} className="text-foreground" />
           </div>
 
           {/* Title and description */}
@@ -46,7 +41,7 @@ export function EvaluationCard() {
               onClick={showNotImplemented}
               className="w-full px-4 py-1 text-sm text-foreground bg-background hover:bg-hover border border-border-subtle rounded transition-colors flex justify-start items-center gap-2"
             >
-              <MessageSquareText size={14} />
+              <MessageCircle size={14} />
               <span>Add your prompt</span>
             </button>
 
@@ -54,7 +49,7 @@ export function EvaluationCard() {
               onClick={showNotImplemented}
               className="w-full px-4 py-1 text-sm text-foreground bg-background hover:bg-hover border border-border-subtle rounded transition-colors flex justify-start items-center gap-2"
             >
-              <Upload size={14} />
+              <Database size={14} />
               <span>Upload data</span>
             </button>
 
@@ -62,7 +57,7 @@ export function EvaluationCard() {
               onClick={showNotImplemented}
               className="w-full px-4 py-1 text-sm text-foreground bg-background hover:bg-hover border border-border-subtle rounded transition-colors flex justify-start items-center gap-2"
             >
-              <FlaskConical size={14} />
+              <Beaker size={14} />
               <span>Create experiment</span>
             </button>
           </div>

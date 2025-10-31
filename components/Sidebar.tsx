@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import {
@@ -20,8 +19,6 @@ import {
   LayoutGrid,
   Square,
   Star,
-  Menu,
-  X,
   type LucideIcon,
 } from "lucide-react";
 import { showNotImplemented } from "@/lib/toast-utils";
@@ -52,20 +49,16 @@ const navItems: NavItem[] = [
   { name: "Configuration", icon: Settings, path: "/configuration" },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+  isMobileOpen: boolean;
+  setIsMobileOpen: (open: boolean) => void;
+}
+
+export function Sidebar({ isMobileOpen, setIsMobileOpen }: SidebarProps) {
   const pathname = usePathname();
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   return (
     <>
-      {/* Mobile menu button - only visible on < md screens */}
-      <button
-        onClick={() => setIsMobileOpen(true)}
-        className="md:hidden fixed top-4 left-4 z-40 p-2 bg-surface border border-border-subtle rounded-md text-foreground hover:bg-hover transition-colors"
-      >
-        <Menu size={20} />
-      </button>
-
       {/* Backdrop overlay for mobile */}
       {isMobileOpen && (
         <div

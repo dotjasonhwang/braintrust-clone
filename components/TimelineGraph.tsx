@@ -118,7 +118,7 @@ const chartConfig = {
 
 export function TimelineGraph() {
   return (
-    <Card>
+    <Card className="bg-transparent border-none shadow-none">
       <ChartContainer className="h-24" config={chartConfig}>
         <BarChart
           accessibilityLayer

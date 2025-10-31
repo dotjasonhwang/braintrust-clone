@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Sidebar } from "@/components/Sidebar";
-import { ProjectHeader } from "@/components/ProjectHeader";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
-import projectData from "@/data/logs.json";
+import { LayoutClient } from "./layout-client";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Braintrust Clone - Project Overview",
+  title: "Braintrust Clone",
   description: "Educational clone of Braintrust AI model evaluation platform",
 };
 
@@ -36,23 +34,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex min-h-screen md:h-screen bg-background md:overflow-hidden">
-            {/* Sidebar - hidden from layout on mobile, participates in flex on desktop */}
-            <div className="w-0 md:w-auto">
-              <Sidebar />
-            </div>
-
-            {/* Main content area */}
-            <div className="flex-1 flex flex-col min-w-0">
-              {/* Project header */}
-              <ProjectHeader project={projectData.project} />
-
-              {/* Page content */}
-              <div className="flex-1 bg-background border-t md:border-l md:rounded-tl-md border-border-subtle overflow-x-hidden overflow-y-auto">
-                <main className="m-3">{children}</main>
-              </div>
-            </div>
-          </div>
+          <LayoutClient>{children}</LayoutClient>
           <Toaster position="bottom-center" offset="120px" />
         </ThemeProvider>
       </body>

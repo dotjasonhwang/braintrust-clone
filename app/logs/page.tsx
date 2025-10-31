@@ -56,7 +56,9 @@ function LogsContent() {
         >
           <PageContainer>
             <LogsToolbar />
-            <TimelineGraph />
+            <div className="bg-surface rounded">
+              <TimelineGraph />
+            </div>
             <div className="mt-2 flex-1 overflow-auto">
               <LogsTable logs={projectData.logs} onLogClick={handleLogClick} />
             </div>

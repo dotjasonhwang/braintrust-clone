@@ -3,10 +3,20 @@
 import { usePathname } from "next/navigation";
 import {
   Settings2,
-  Sparkles,
+  PanelLeft,
   BookOpen,
   CircleQuestionMark,
   Search,
+  Home,
+  Activity,
+  BarChart3,
+  CheckCircle,
+  Gamepad2,
+  FlaskConical,
+  Folder,
+  MessageSquare,
+  Zap,
+  type LucideIcon,
 } from "lucide-react";
 import { ProjectDropdown } from "./ProjectDropdown";
 import { ThemeSwitcher } from "./ThemeSwitcher";
@@ -26,29 +36,32 @@ import {
 
 interface ProjectHeaderProps {
   project: Project;
+  onMenuClick?: () => void;
 }
 
-// Map routes to page titles
-const getPageTitle = (pathname: string): string => {
-  const routes: Record<string, string> = {
-    "/": "Project Overview",
-    "/logs": "Logs",
-    "/monitor": "Monitor",
-    "/review": "Review",
-    "/playgrounds": "Playgrounds",
-    "/experiments": "Experiments",
-    "/datasets": "Datasets",
-    "/prompts": "Prompts",
-    "/scorers": "Scorers",
-    "/configuration": "Configuration",
+// Map routes to page titles and icons
+const getPageTitle = (
+  pathname: string
+): { title: string; icon: LucideIcon } => {
+  const routes: Record<string, { title: string; icon: LucideIcon }> = {
+    "/": { title: "Project Overview", icon: Home },
+    "/logs": { title: "Logs", icon: Activity },
+    "/monitor": { title: "Monitor", icon: BarChart3 },
+    "/review": { title: "Review", icon: CheckCircle },
+    "/playgrounds": { title: "Playgrounds", icon: Gamepad2 },
+    "/experiments": { title: "Experiments", icon: FlaskConical },
+    "/datasets": { title: "Datasets", icon: Folder },
+    "/prompts": { title: "Prompts", icon: MessageSquare },
+    "/scorers": { title: "Scorers", icon: Zap },
+    "/configuration": { title: "Configuration", icon: Settings2 },
   };
 
-  return routes[pathname] || "Project";
+  return routes[pathname] || { title: "Project", icon: Home };
 };
 
-export function ProjectHeader({ project }: ProjectHeaderProps) {
+export function ProjectHeader({ project, onMenuClick }: ProjectHeaderProps) {
   const pathname = usePathname();
-  const pageTitle = getPageTitle(pathname);
+  const { title: pageTitle, icon: PageIcon } = getPageTitle(pathname);
 
   const handleCopyId = () => {
     navigator.clipboard.writeText(project.id);
@@ -58,8 +71,17 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
     <TooltipProvider>
       <header className="bg-surface px-3 py-3">
         <div className="flex items-center justify-between">
-          {/* Left: Project name */}
-          <h1 className="text-sm text-muted font-semibold">My Project</h1>
+          {/* Left: Mobile menu + Project name */}
+          <div className="flex items-center gap-2">
+            {/* Mobile menu button - only visible on < md screens */}
+            <button
+              onClick={onMenuClick}
+              className="md:hidden p-2 text-muted hover:bg-hover rounded-md transition-colors"
+            >
+              <PanelLeft size={20} />
+            </button>
+            <h1 className="text-sm text-muted font-semibold">My Project</h1>
+          </div>
 
           {/* Right: Project ID */}
           <div className="flex items-center gap-1">
@@ -93,10 +115,11 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
           </div>
         </div>
 
-        <div className="flex items-center justify-between overflow-x-auto whitespace-nowrap">
+        <div className="mt-4 flex gap-2 items-center justify-between overflow-x-auto whitespace-nowrap">
           {/* Left: Page title */}
-          <div className="flex mt-4 gap-2">
-            <h1 className="text-sm font-semibold text-foreground">
+          <div className="flex gap-2">
+            <h1 className="text-sm font-semibold text-foreground flex items-center gap-2">
+              <PageIcon size={16} />
               {pageTitle}
             </h1>
             <ProjectDropdown />
