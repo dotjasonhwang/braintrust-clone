@@ -12,7 +12,7 @@ interface PageContainerProps {
 export function PageContainer({ children }: PageContainerProps) {
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-1 overflow-auto">{children}</div>
+      <div className="flex-1">{children}</div>
       <Footer />
     </div>
   );

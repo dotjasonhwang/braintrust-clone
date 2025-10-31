@@ -48,8 +48,8 @@ export default function RootLayout({
               <ProjectHeader project={projectData.project} />
 
               {/* Page content */}
-              <div className="flex-1 bg-background border-t md:border-l md:rounded-tl-md border-border-subtle overflow-x-hidden">
-                <main className="m-3 h-full">{children}</main>
+              <div className="flex-1 bg-background border-t md:border-l md:rounded-tl-md border-border-subtle overflow-x-hidden overflow-y-auto">
+                <main className="m-3">{children}</main>
               </div>
             </div>
           </div>
