@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { PageContainer } from "@/components/PageContainer";
@@ -17,7 +17,7 @@ import type { LogEntry } from "@/types";
  * Uses resizable panels for detail view
  */
 
-export default function LogsPage() {
+function LogsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedLog, setSelectedLog] = useState<LogEntry | null>(null);
@@ -74,5 +74,13 @@ export default function LogsPage() {
         )}
       </PanelGroup>
     </div>
+  );
+}
+
+export default function LogsPage() {
+  return (
+    <Suspense fallback={<div className="h-full w-full" />}>
+      <LogsContent />
+    </Suspense>
   );
 }
