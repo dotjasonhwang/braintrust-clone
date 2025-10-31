@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import {
@@ -19,6 +20,8 @@ import {
   LayoutGrid,
   Square,
   Star,
+  Menu,
+  X,
   type LucideIcon,
 } from "lucide-react";
 import { showNotImplemented } from "@/lib/toast-utils";
@@ -26,6 +29,7 @@ import { showNotImplemented } from "@/lib/toast-utils";
 /**
  * Sidebar navigation component
  * Displays user profile and main navigation menu
+ * Responsive: collapsible overlay on mobile (< md), static on desktop (>= md)
  */
 
 interface NavItem {
@@ -50,48 +54,75 @@ const navItems: NavItem[] = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   return (
-    <div className="w-60 p-2 bg-surface h-screen flex flex-col gap-0.5 justify-between text-foreground">
-      {/* Top section */}
-      <div>
-        {/* User Profile Section */}
-        <div className="flex items-center justify-between">
-          <button
-            onClick={showNotImplemented}
-            className="px-2 py-2 text-sm font-medium hover:bg-hover rounded flex items-center gap-1"
-          >
-            <span>dotjasonhwang</span>
-            <ChevronDown size={14} className="text-muted" />
-          </button>
-          <div className="flex items-center gap-1">
-            <button className="text-muted hover:bg-hover rounded-md p-2">
-              <LayoutGrid size={16} />
+    <>
+      {/* Mobile menu button - only visible on < md screens */}
+      <button
+        onClick={() => setIsMobileOpen(true)}
+        className="md:hidden fixed top-4 left-4 z-40 p-2 bg-surface border border-border-subtle rounded-md text-foreground hover:bg-hover transition-colors"
+      >
+        <Menu size={20} />
+      </button>
+
+      {/* Backdrop overlay for mobile */}
+      {isMobileOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/50 z-40"
+          onClick={() => setIsMobileOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <div
+        className={`
+          w-60 p-2 bg-surface h-screen flex flex-col gap-0.5 justify-between text-foreground
+          md:relative md:translate-x-0
+          fixed top-0 left-0 z-50 transition-transform duration-300
+          ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
+        `}
+      >
+        {/* Top section */}
+        <div>
+          {/* User Profile Section */}
+          <div className="flex items-center justify-between">
+            <button
+              onClick={showNotImplemented}
+              className="px-2 py-2 text-sm font-medium hover:bg-hover rounded flex items-center gap-1"
+            >
+              <span>dotjasonhwang</span>
+              <ChevronDown size={14} className="text-muted" />
             </button>
-            <button className="text-muted hover:bg-hover rounded-md p-2">
-              <Square size={16} />
+            <div className="flex items-center gap-1">
+              <button className="text-muted hover:bg-hover rounded-md p-2">
+                <LayoutGrid size={16} />
+              </button>
+              <button className="text-muted hover:bg-hover rounded-md p-2">
+                <Square size={16} />
+              </button>
+            </div>
+          </div>
+
+          {/* Project Selector */}
+          <div className="mt-2 flex flex-col gap-0.5">
+            <div className="px-2 text-muted text-xs">Project</div>
+            <button className="py-2 px-2 w-full flex items-center justify-between rounded text-sm font-medium hover:bg-hover transition-colors">
+              <span>My Project</span>
+              <ChevronDown size={14} className="text-muted" />
             </button>
           </div>
-        </div>
 
-        {/* Project Selector */}
-        <div className="mt-2 flex flex-col gap-0.5">
-          <div className="px-2 text-muted text-xs">Project</div>
-          <button className="py-2 px-2 w-full flex items-center justify-between rounded text-sm font-medium hover:bg-hover transition-colors">
-            <span>My Project</span>
-            <ChevronDown size={14} className="text-muted" />
-          </button>
-        </div>
+          {/* Navigation Menu */}
+          <nav className="flex-1 py-1">
+            <div className="space-y-0.5">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = pathname === item.path;
+                const isImplemented =
+                  item.path === "/" || item.path === "/logs";
 
-        {/* Navigation Menu */}
-        <nav className="flex-1 py-1">
-          <div className="space-y-0.5">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = pathname === item.path;
-              const isImplemented = item.path === "/" || item.path === "/logs";
-
-              const className = `
+                const className = `
                 w-full flex items-center gap-2 p-1.5 rounded text-xs font-medium
                 transition-colors
                 ${
@@ -101,70 +132,79 @@ export function Sidebar() {
                 }
               `;
 
-              if (isImplemented) {
+                if (isImplemented) {
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.path}
+                      className={className}
+                      onClick={() => setIsMobileOpen(false)}
+                    >
+                      <Icon size={16} />
+                      <span>{item.name}</span>
+                    </Link>
+                  );
+                }
+
                 return (
-                  <Link key={item.name} href={item.path} className={className}>
+                  <button
+                    key={item.name}
+                    onClick={() => {
+                      showNotImplemented();
+                      setIsMobileOpen(false);
+                    }}
+                    className={className}
+                  >
                     <Icon size={16} />
                     <span>{item.name}</span>
-                  </Link>
+                  </button>
                 );
-              }
-
-              return (
-                <button
-                  key={item.name}
-                  onClick={showNotImplemented}
-                  className={className}
-                >
-                  <Icon size={16} />
-                  <span>{item.name}</span>
-                </button>
-              );
-            })}
-          </div>
-        </nav>
-      </div>
-
-      {/* Bottom section */}
-      <div>
-        {/* Free Plan Usage Section */}
-        <div className="border border-border-subtle p-2 rounded bg-surface-elevated space-y-1.5">
-          {/* Free plan usage header */}
-          <div className="flex items-center justify-between text-xs">
-            <span>Free plan usage</span>
-            <button
-              onClick={showNotImplemented}
-              className="text-xs text-foreground hover:text-white"
-            >
-              <ArrowUpRight size={14} />
-            </button>
-          </div>
-
-          {/* Logs usage */}
-
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-muted">Logs</span>
-            <span className="text-muted">0 of 1 GB</span>
-          </div>
-
-          {/* Scores/metrics usage */}
-
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-muted">Scores/metrics</span>
-            <span className="text-muted">0 of 10,000</span>
-          </div>
+              })}
+            </div>
+          </nav>
         </div>
-        {/* Reference */}
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://dotjasonhwang.com"
-          className="w-full flex items-center gap-2 p-1.5 text-sm text-foreground hover:bg-hover rounded"
-        >
-          <Star size={14} className="text-muted" />
-          <span>dotjasonhwang.com</span>
-        </Link>
+
+        {/* Bottom section */}
+        <div>
+          {/* Free Plan Usage Section */}
+          <div className="border border-border-subtle p-2 rounded bg-surface-elevated space-y-1.5">
+            {/* Free plan usage header */}
+            <div className="flex items-center justify-between text-xs">
+              <span>Free plan usage</span>
+              <button
+                onClick={showNotImplemented}
+                className="text-xs text-foreground hover:text-white"
+              >
+                <ArrowUpRight size={14} />
+              </button>
+            </div>
+
+            {/* Logs usage */}
+
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-muted">Logs</span>
+              <span className="text-muted">0 of 1 GB</span>
+            </div>
+
+            {/* Scores/metrics usage */}
+
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-muted">Scores/metrics</span>
+              <span className="text-muted">0 of 10,000</span>
+            </div>
+          </div>
+          {/* Reference */}
+          <Link
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://dotjasonhwang.com"
+            className="w-full flex items-center gap-2 p-1.5 text-sm text-foreground hover:bg-hover rounded"
+          >
+            <Star size={14} className="text-muted" />
+            <span>dotjasonhwang.com</span>
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

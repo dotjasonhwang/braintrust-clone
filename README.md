@@ -24,9 +24,6 @@ SOFTWARE.
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/dotjasonhwang/braintrust-clone">
-    <img src="readme-assets/logo.png" alt="Logo" width="256" height="256" style="margin-bottom: 10px">
-  </a>
   <h1 align="center">Braintrust Clone</h1>
 
   <p align="center">An educational project - partial clone of <a href="https://www.braintrust.dev/">Braintrust</a>, built with React, Next.js, and Tailwind CSS</p>

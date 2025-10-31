@@ -93,7 +93,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
           </div>
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between overflow-x-auto whitespace-nowrap">
           {/* Left: Page title */}
           <div className="flex mt-4 gap-2">
             <h1 className="text-sm font-semibold text-foreground">
