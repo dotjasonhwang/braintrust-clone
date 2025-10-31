@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { showNotImplemented } from "@/lib/toast-utils";
 
 /**
@@ -10,17 +9,17 @@ import { showNotImplemented } from "@/lib/toast-utils";
 
 export function Footer() {
   const footerLinks = [
-    { label: "Home", href: { undefined } },
-    { label: "Docs", href: { undefined } },
-    { label: "Pricing", href: { undefined } },
-    { label: "Blog", href: { undefined } },
-    { label: "Request a demo", href: { undefined } },
-    { label: "Discord", href: { undefined } },
-    { label: "Changelog", href: { undefined } },
-    { label: "Status", href: { undefined } },
-    { label: "Trust center", href: { undefined } },
-    { label: "Privacy", href: { undefined } },
-    { label: "Terms", href: { undefined } },
+    "Home",
+    "Docs",
+    "Pricing",
+    "Blog",
+    "Request a demo",
+    "Discord",
+    "Changelog",
+    "Status",
+    "Trust center",
+    "Privacy",
+    "Terms",
   ];
 
   return (
@@ -33,15 +32,14 @@ export function Footer() {
 
         {/* Navigation links */}
         <nav className="flex items-center gap-4">
-          {footerLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
+          {footerLinks.map((label) => (
+            <button
+              key={label}
               onClick={showNotImplemented}
               className="text-xs text-placeholder hover:text-foreground transition-colors"
             >
-              {link.label}
-            </Link>
+              {label}
+            </button>
           ))}
         </nav>
       </div>
